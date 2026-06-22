@@ -83,7 +83,7 @@ export function Header() {
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
-            history.replaceState(null, "", "#topo");
+            history.pushState(null, "", "#topo");
           }}
           className="flex items-center gap-3"
         >
