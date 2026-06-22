@@ -27,7 +27,6 @@ function useActiveSection(ids: string[]) {
         if (visible[0]) setActive(visible[0].target.id);
       },
       {
-        // Compensa o header sticky (~5rem) no topo
         rootMargin: "-30% 0px -55% 0px",
         threshold: [0, 0.25, 0.5, 0.75, 1],
       },
@@ -40,9 +39,27 @@ function useActiveSection(ids: string[]) {
   return active;
 }
 
+function scrollToHash(hash: string) {
+  if (!hash) return;
+  const id = hash.startsWith("#") ? hash.slice(1) : hash;
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export function Header() {
   const ids = navLinks.map((l) => l.href.slice(1));
   const active = useActiveSection(ids);
+
+  // Deep-link: rola para a âncora presente na URL ao montar.
+  // hashchange: trata back/forward do navegador rolando para o destino.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash) scrollToHash(window.location.hash);
+    const onHashChange = () => scrollToHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -53,7 +70,9 @@ export function Header() {
     if (!el) return;
     e.preventDefault();
     el.scrollIntoView({ behavior: "smooth", block: "start" });
-    history.replaceState(null, "", href);
+    if (window.location.hash !== href) {
+      history.pushState(null, "", href);
+    }
   };
 
   return (
@@ -64,7 +83,7 @@ export function Header() {
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
-            history.replaceState(null, "", "#topo");
+            history.pushState(null, "", "#topo");
           }}
           className="flex items-center gap-3"
         >

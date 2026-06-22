@@ -1,9 +1,9 @@
 export function AboutSection() {
   return (
-    <section id="sobre" className="bg-secondary/40 py-16">
+    <section id="sobre" aria-labelledby="sobre-heading" className="bg-secondary/40 py-16">
       <div className="mx-auto grid max-w-5xl items-center gap-10 px-4 md:grid-cols-2">
         <div>
-          <h2 className="mb-4 text-3xl font-bold">Sobre nós</h2>
+          <h2 id="sobre-heading" className="mb-4 text-3xl font-bold">Sobre nós</h2>
           <p className="text-foreground/80 leading-relaxed">
             Somos estudantes do curso de Ciência da Computação da UTFPR Campo
             Mourão. O <strong>UTFPR Buy e Sell</strong> nasceu como projeto da

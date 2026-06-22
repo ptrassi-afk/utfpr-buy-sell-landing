@@ -8,9 +8,9 @@ const team = [
 
 export function TeamSection() {
   return (
-    <section id="equipe" className="bg-secondary/40 py-16">
+    <section id="equipe" aria-labelledby="equipe-heading" className="bg-secondary/40 py-16">
       <div className="mx-auto max-w-5xl px-4">
-        <h2 className="mb-10 text-center text-3xl font-bold">Nossa Equipe</h2>
+        <h2 id="equipe-heading" className="mb-10 text-center text-3xl font-bold">Nossa Equipe</h2>
         <ul className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4">
           {team.map((member) => (
             <li key={member.name} className="flex flex-col items-center text-center">
