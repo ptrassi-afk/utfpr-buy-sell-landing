@@ -5,9 +5,9 @@ const PROTOTYPE_EMBED =
 
 export function PrototypeSection() {
   return (
-    <section id="prototipo" className="bg-background py-16">
+    <section id="prototipo" aria-labelledby="prototipo-heading" className="bg-background py-16">
       <div className="mx-auto max-w-3xl px-4">
-        <h2 className="mb-8 text-center text-3xl font-bold">
+        <h2 id="prototipo-heading" className="mb-8 text-center text-3xl font-bold">
           Protótipo — UTFPR Buy e Sell
         </h2>
         <div className="mx-auto h-[720px] w-full max-w-md overflow-hidden rounded-xl border border-border bg-secondary shadow-sm">
