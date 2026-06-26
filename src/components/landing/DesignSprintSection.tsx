@@ -1,7 +1,6 @@
-// TODO: substituir DESIGN_SPRINT_EMBED pelo link de embed do Figma do Design Sprint.
-// Formato: https://www.figma.com/embed?embed_host=share&url=<URL_DO_ARQUIVO_FIGMA>
+// Board do Miro com o Design Sprint completo.
 const DESIGN_SPRINT_EMBED =
-  "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FREPLACE_ME";
+  "https://miro.com/app/live-embed/uXjVHCjc9SA=/?embedMode=view_only_without_ui&moveToViewport=&embedId=utfpr-buy-e-sell";
 
 export function DesignSprintSection() {
   return (
@@ -11,7 +10,8 @@ export function DesignSprintSection() {
         <div className="mx-auto h-[600px] w-full overflow-hidden rounded-xl border border-border shadow-sm">
           <iframe
             src={DESIGN_SPRINT_EMBED}
-            title="Mapa do Design Sprint — UTFPR Buy e Sell"
+            title="Mapa do Design Sprint — UTFPR Buy e Sell (Miro)"
+            allow="fullscreen; clipboard-read; clipboard-write"
             allowFullScreen
             className="h-full w-full"
           />
