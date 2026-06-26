@@ -1,6 +1,6 @@
-// Board do Miro com o Design Sprint completo.
+// Board do Miro com o Design Sprint (embed oficial copiado do Miro).
 const DESIGN_SPRINT_EMBED =
-  "https://miro.com/app/live-embed/uXjVHCjc9SA=/?embedMode=view_only_without_ui&moveToViewport=&embedId=utfpr-buy-e-sell";
+  "https://miro.com/app/live-embed/uXjVHCjc9SA=/?embedMode=view_only_without_ui&moveToViewport=-318,-646,3631,6261&embedId=301973545908";
 
 export function DesignSprintSection() {
   return (
