@@ -2,7 +2,7 @@
 const PROTOTYPE_EMBED =
   "https://www.figma.com/embed?embed_host=share&url=" +
   encodeURIComponent(
-    "https://www.figma.com/design/kPbAaCPp0CcwU8SVWW5Pua/Projeto-Pedro-IHC?node-id=0-1&t=CrPw1I8qjNX6blPy-1",
+    "https://www.figma.com/proto/kPbAaCPp0CcwU8SVWW5Pua/Projeto-Pedro-IHC?node-id=9-86&p=f&t=CrPw1I8qjNX6blPy-0&scaling=scale-down&content-scaling=responsive&page-id=0%3A1&starting-point-node-id=9%3A86&show-proto-sidebar=1",
   );
 
 export function PrototypeSection() {
