@@ -1,9 +1,13 @@
-// TODO: substituir nomes e fotos dos integrantes da equipe.
+import m1 from "@/assets/team/m1.jpg";
+import m2 from "@/assets/team/m2.jpg";
+import m3 from "@/assets/team/m3.jpg";
+import m4 from "@/assets/team/m4.jpg";
+
 const team = [
-  { name: "Integrante 1", photo: "https://placehold.co/240x240/FFF6B3/1A171B?text=1" },
-  { name: "Integrante 2", photo: "https://placehold.co/240x240/FFF6B3/1A171B?text=2" },
-  { name: "Integrante 3", photo: "https://placehold.co/240x240/FFF6B3/1A171B?text=3" },
-  { name: "Integrante 4", photo: "https://placehold.co/240x240/FFF6B3/1A171B?text=4" },
+  { name: "Eduardo Cordeiro Pedrozo", photo: m1 },
+  { name: "Higor Pelozatto Reis Vassoler", photo: m2 },
+  { name: "João A. S. M. S. Trassi", photo: m3 },
+  { name: "Pedro A. S. M. S. Trassi", photo: m4 },
 ];
 
 export function TeamSection() {
