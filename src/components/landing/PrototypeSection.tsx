@@ -1,7 +1,9 @@
-// TODO: substituir PROTOTYPE_EMBED pelo link de embed do protótipo no Figma.
-// Use o link "Share prototype" e troque por https://www.figma.com/embed?embed_host=share&url=<URL>
+// Embed do protótipo Figma — Projeto Pedro IHC (UTFPR Buy e Sell).
 const PROTOTYPE_EMBED =
-  "https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FREPLACE_ME";
+  "https://www.figma.com/embed?embed_host=share&url=" +
+  encodeURIComponent(
+    "https://www.figma.com/design/kPbAaCPp0CcwU8SVWW5Pua/Projeto-Pedro-IHC?node-id=0-1&t=CrPw1I8qjNX6blPy-1",
+  );
 
 export function PrototypeSection() {
   return (
