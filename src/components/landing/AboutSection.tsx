@@ -15,7 +15,6 @@ export function AboutSection() {
           </p>
         </div>
         <div className="aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted">
-          {/* TODO: substituir por imagem real da equipe ou do projeto */}
           <img
             src={sobreNosAsset.url}
             alt="Ilustração da plataforma UTFPR Buy & Sell"
