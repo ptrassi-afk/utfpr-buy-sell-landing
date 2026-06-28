@@ -1,26 +1,19 @@
-// Embed do protótipo Figma — Projeto Pedro IHC (UTFPR Buy e Sell).
-const PROTOTYPE_EMBED =
-  "https://www.figma.com/embed?embed_host=share&url=" +
-  encodeURIComponent(
-    "https://www.figma.com/proto/kPbAaCPp0CcwU8SVWW5Pua/Projeto-Pedro-IHC?node-id=9-86&t=TSEzgnrN2Xgzoplw-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=9%3A86&show-proto-sidebar=1",
-  );
+import { EMBEDS, SECTION_IDS, SITE } from "@/config/site";
+import { EmbedFrame } from "./EmbedFrame";
+import { Section } from "./Section";
 
 export function PrototypeSection() {
   return (
-    <section id="prototipo" aria-labelledby="prototipo-heading" className="bg-background py-16">
-      <div className="mx-auto max-w-3xl px-4">
-        <h2 id="prototipo-heading" className="mb-8 text-center text-3xl font-bold">
-          Protótipo — UTFPR Buy e Sell
-        </h2>
-        <div className="mx-auto h-[720px] w-full max-w-md overflow-hidden rounded-xl border border-border bg-secondary shadow-sm">
-          <iframe
-            src={PROTOTYPE_EMBED}
-            title="Protótipo navegável UTFPR Buy e Sell"
-            allowFullScreen
-            className="h-full w-full"
-          />
-        </div>
-      </div>
-    </section>
+    <Section
+      id={SECTION_IDS.prototype}
+      title={`Protótipo — ${SITE.name}`}
+      maxWidth="sm"
+    >
+      <EmbedFrame
+        src={EMBEDS.prototype}
+        title={`Protótipo navegável ${SITE.name}`}
+        variant="phone"
+      />
+    </Section>
   );
 }
