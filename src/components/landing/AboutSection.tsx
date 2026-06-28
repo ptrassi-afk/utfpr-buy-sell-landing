@@ -1,3 +1,5 @@
+import sobreNosAsset from "@/assets/sobre-nos.png.asset.json";
+
 export function AboutSection() {
   return (
     <section id="sobre" aria-labelledby="sobre-heading" className="bg-secondary/40 py-16">
@@ -15,8 +17,8 @@ export function AboutSection() {
         <div className="aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted">
           {/* TODO: substituir por imagem real da equipe ou do projeto */}
           <img
-            src="https://placehold.co/800x450/EDEFD9/1A171B?text=Sobre+nós"
-            alt="Sobre o projeto UTFPR Buy e Sell"
+            src={sobreNosAsset.url}
+            alt="Ilustração da plataforma UTFPR Buy & Sell"
             className="h-full w-full object-cover"
           />
         </div>
