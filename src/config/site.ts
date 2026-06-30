@@ -46,8 +46,8 @@ export const TEAM: ReadonlyArray<{ name: string; photo: string }> = [
 ];
 
 export const EMBEDS = {
-  // TODO: substituir pelo link real do vídeo (YouTube embed).
-  video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+  // Link do vídeo de apresentação do projeto (YouTube).
+  video: "https://www.youtube.com/embed/J0iRyt-d2zE",
   designSprint:
     "https://miro.com/app/live-embed/uXjVHCjc9SA=/?embedMode=view_only_without_ui&moveToViewport=-318%2C-646%2C3631%2C6261&embedId=301973545908",
   prototype:
