@@ -4,6 +4,9 @@ Landing page do projeto **UTFPR Buy e Sell** — Marketplace para estudantes da
 UTFPR Campo Mourão. Projeto da disciplina de Interação Humano-Computador (IHC)
 do curso de Ciência da Computação.
 
+Site estático (SPA) construído com **Vite + React + Tailwind v4**, pronto
+para hospedagem no **GitHub Pages**.
+
 ## Desenvolvimento
 
 ```bash
@@ -11,34 +14,50 @@ bun install
 bun run dev
 ```
 
-## O que editar
+Acesse `http://localhost:8080`.
 
-Os "TODOs" estão concentrados nos componentes em `src/components/landing/`:
+## Build
 
-- `VideoSection.tsx` → `VIDEO_EMBED_URL` (link embed do YouTube)
-- `DesignSprintSection.tsx` → `DESIGN_SPRINT_EMBED` (link embed Figma)
-- `PrototypeSection.tsx` → `PROTOTYPE_EMBED` (link embed do protótipo Figma)
-- `TeamSection.tsx` → lista `team` com nomes e fotos dos integrantes
-- `AboutSection.tsx` → imagem ao lado do texto
-
-Para o Figma, use o link de **share** e troque pelo formato:
-
+```bash
+bun run build
 ```
-https://www.figma.com/embed?embed_host=share&url=<URL_CODIFICADA_DO_ARQUIVO>
-```
+
+A pasta `dist/` contém os arquivos estáticos prontos para deploy. O Vite
+está configurado com `base: "./"`, então o mesmo build funciona em qualquer
+subpath do GitHub Pages (`https://<user>.github.io/<repo>/`).
 
 ## Deploy no GitHub Pages
 
-1. Faça `bun run build` para gerar o build estático em `dist/`.
-2. Suba o conteúdo de `dist/` para o branch `gh-pages` do repositório (ou
-   configure uma GitHub Action de deploy estático para Pages).
-3. Em **Settings → Pages** do repositório, selecione o branch `gh-pages` como
-   fonte.
+Existe um workflow pronto em `.github/workflows/deploy.yml` que faz o
+build e publica automaticamente a cada push na branch `main`.
 
-> A landing é single-page (uma rota só, com âncoras), então não há problema de
-> rotas em refresh no GitHub Pages.
+Para ativar:
+
+1. No GitHub, em **Settings → Pages**, mude **Source** para **GitHub Actions**.
+2. Faça push para a `main`. A Action rodará `bun run build` e publicará
+   `dist/` no Pages.
+3. O site ficará disponível em `https://<seu-usuario>.github.io/<nome-do-repo>/`.
+
+> A landing é single-page (uma rota só, com âncoras `#secao`), então não há
+> problema de rotas em refresh. Mesmo assim, há um `public/404.html` que
+> serve como fallback caso o usuário entre em uma URL desconhecida.
+
+### Deploy manual (alternativa)
+
+Se preferir não usar Actions:
+
+```bash
+bun run build
+# suba o conteúdo de dist/ para a branch gh-pages (ex: usando a CLI gh-pages)
+```
+
+## O que editar
+
+Os TODOs estão em `src/config/site.ts` (links de vídeo, Figma, Miro e
+equipe) e nos componentes em `src/components/landing/`.
 
 ## Stack
 
-- TanStack Start (React 19) + Vite
+- React 19 + Vite 8
 - Tailwind CSS v4 (tokens em `src/styles.css`)
+- TypeScript estrito
