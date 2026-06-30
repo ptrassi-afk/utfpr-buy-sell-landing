@@ -1,35 +1,51 @@
 import { useEffect, useState } from "react";
 
 /**
- * Observa um conjunto de seções e retorna o id daquela atualmente mais visível
- * na viewport. Usado para destacar o item ativo na navegação âncora.
+ * Observa um conjunto de seções e retorna o id daquela atualmente
+ * "no topo da viewport", levando em conta o header sticky.
+ *
+ * A estratégia é scrollspy: a seção ativa é a última (em ordem do DOM)
+ * cujo topo já passou da linha logo abaixo do header. Isso é mais confiável
+ * que IntersectionObserver com rootMargin pequeno para seções grandes e
+ * mantém o indicador do header sincronizado ao clicar em links âncora.
  */
 export function useActiveSection(ids: ReadonlyArray<string>): string {
   const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
+    const header = document.querySelector("header");
+    const headerHeight = header ? header.getBoundingClientRect().height : 72;
+    const margin = 24;
+    const offset = headerHeight + margin;
 
-    if (elements.length === 0) return;
+    const updateActive = () => {
+      const scrollY = window.scrollY;
+      let current = "";
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const mostVisible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      for (const id of ids) {
+        const element = document.getElementById(id);
+        if (!element) continue;
 
-        if (mostVisible) setActive(mostVisible.target.id);
-      },
-      {
-        rootMargin: "-30% 0px -55% 0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      },
-    );
+        const elementTop = element.getBoundingClientRect().top + scrollY;
+        if (elementTop <= scrollY + offset) {
+          current = id;
+        } else {
+          break;
+        }
+      }
 
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      setActive(current);
+    };
+
+    updateActive();
+
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
   }, [ids]);
 
   return active;
